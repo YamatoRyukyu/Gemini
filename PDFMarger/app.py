@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, Listbox, Scrollbar
 import os
+import re
 import fitz  # PyMuPDF
 
 class PDFMergerApp:
@@ -63,9 +64,14 @@ class PDFMergerApp:
         self.file_list = list(files)
         self.update_listbox()
 
+    @staticmethod
+    def natural_sort_key(s):
+        return [int(text) if text.isdigit() else text.lower()
+                for text in re.split(r'([0-9]+)', os.path.basename(s))]
+
     def update_listbox(self):
         self.listbox.delete(0, tk.END)
-        self.file_list.sort()
+        self.file_list.sort(key=self.natural_sort_key)
         for file_path in self.file_list:
             self.listbox.insert(tk.END, os.path.basename(file_path))
 
