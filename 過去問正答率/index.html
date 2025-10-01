@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>過去問演習管理アプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>過去問演習管理アプリ 📊</h1>
+
+        <div id="stats-container">
+            <div class="stat-card">
+                <h3>累計問題数</h3>
+                <p id="total-questions">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>累計正解数</h3>
+                <p id="total-correct">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>総合正答率</h3>
+                <p id="overall-accuracy">0.0%</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>📈 正答率の推移</h2>
+        <div class="chart-container">
+            <canvas id="progress-chart"></canvas>
+        </div>
+
+        <hr>
+
+        <h2>📝 新規記録の追加</h2>
+        <form id="record-form">
+            <div class="form-group">
+                <label for="record-date">演習日</label>
+                <input type="date" id="record-date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="total-questions-input">問題数</label>
+                <input type="number" id="total-questions-input" min="1" required placeholder="例: 50">
+            </div>
+
+            <div class="form-group">
+                <label for="correct-answers-input">正解数</label>
+                <input type="number" id="correct-answers-input" min="0" required placeholder="問題数以下の数値を入力">
+            </div>
+            
+            <div class="form-group">
+                <label for="memo-input">メモ (任意)</label>
+                <input type="text" id="memo-input" placeholder="例: H30秋期 午前">
+            </div>
+
+            <button type="submit">記録する</button>
+        </form>
+
+        <hr>
+
+        <h2>📋 学習記録一覧</h2>
+        <div class="table-container">
+            <table id="record-table">
+                <thead>
+                    <tr>
+                        <th data-sort="date">日付 ↕</th>
+                        <th>問題数</th>
+                        <th>正解数</th>
+                        <th data-sort="accuracy">正答率 ↕</th>
+                        <th>メモ</th>
+                        <th>削除</th>
+                    </tr>
+                </thead>
+                <tbody id="record-list">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

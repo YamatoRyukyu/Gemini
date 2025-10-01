@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考書進捗管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>参考書進捗管理</h1>
+
+        <form id="progress-form">
+            <div class="form-group">
+                <label for="study-date">日付</label>
+                <input type="date" id="study-date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="start-page">開始ページ</label>
+                <input type="number" id="start-page" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="end-page">終了ページ</label>
+                <input type="number" id="end-page" min="1" required>
+            </div>
+
+            <div class="result-group">
+                <p>進んだページ数: <span id="pages-read">0</span> ページ</p>
+            </div>
+
+            <button type="submit">記録する</button>
+        </form>
+
+        <hr>
+
+        <h2>学習記録</h2>
+        <div class="table-container">
+            <table id="progress-table">
+                <thead>
+                    <tr>
+                        <th>日付</th>
+                        <th>開始ページ</th>
+                        <th>終了ページ</th>
+                        <th>進んだページ数</th>
+                        <th>削除</th>
+                    </tr>
+                </thead>
+                <tbody id="progress-list">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
